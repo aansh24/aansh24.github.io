@@ -1,0 +1,45 @@
+/* ============ The story — scroll-scrubbed film ============ */
+.film { position: relative; height: 100vh; height: 100svh; overflow: hidden; background: #0b0b0b; color: #fff; }
+.film-stage { position: absolute; inset: 0; }
+.fl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.fl-final { background: radial-gradient(ellipse 70% 60% at 50% 55%, var(--paper-2), var(--paper) 70%); visibility: hidden; }
+.fl-svd, .fl-gl, .fl-fog { visibility: hidden; }
+
+.serif { font-family: "Instrument Serif", Georgia, "Times New Roman", serif; font-weight: 400; }
+.fl-texts { position: absolute; inset: 0; pointer-events: none; }
+.ft {
+  position: absolute; left: var(--gutter); right: var(--gutter); opacity: 0; visibility: hidden;
+  will-change: transform, opacity;
+}
+.ft h2 {
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif; font-weight: 400;
+  font-size: clamp(46px, 7.4vw, 136px); line-height: .92; letter-spacing: -.02em; margin: 14px 0 0;
+}
+.ft h2 em { font-style: italic; }
+.ft .label { display: inline-block; }
+.ft p { margin-top: 18px; }
+.ft b { font-weight: 600; }
+.ft.light { color: #fff; text-shadow: 0 2px 30px rgba(0,0,0,.45); }
+.ft.light .label, .ft.light p { color: rgba(255,255,255,.75); }
+.ft.dark { color: var(--ink); }
+.ft.dark .label, .ft.dark p { color: rgba(0,0,0,.55); }
+
+/* centred blocks use flex (transform is driven by the scroll script) */
+.ft-1, .ft-3, .ft-5 { top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.ft-2 { top: 24vh; }
+.ft-2 .eq { margin-top: 26px; font-size: clamp(28px, 3.6vw, 62px); font-style: italic; color: rgba(0,0,0,.7); }
+.ft-4 { bottom: 14vh; }
+.ft-5 .label { margin-top: 26px; }
+
+.fl-hud {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 26px; z-index: 2;
+  display: flex; align-items: center; gap: 16px; mix-blend-mode: difference; color: #fff;
+}
+.fl-bar { flex: 1; height: 1px; background: rgba(255,255,255,.25); overflow: hidden; }
+.fl-bar i { display: block; height: 100%; background: #fff; transform: scaleX(0); transform-origin: left; }
+
+@media (max-width: 900px) {
+  .ft-2 { top: 18vh; }
+  .ft-4 { bottom: 12vh; }
+  .ft h2 { font-size: clamp(42px, 12vw, 80px); }
+}

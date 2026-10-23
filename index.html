@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aansh Yadav — Portfolio</title>
+  <meta name="description" content="Aansh Yadav — aspiring computer scientist and web developer. Lodha Genius Fellow '26. Numerical algorithms, cryptography and software engineering.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/film.css">
+</head>
+<body class="is-loading">
+
+  <!-- Preloader -->
+  <div class="preloader" aria-hidden="true">
+    <svg class="pl-ring" viewBox="0 0 200 200"><circle cx="100" cy="100" r="94" pathLength="100"/></svg>
+    <div class="pl-name">AANSH</div>
+    <div class="pl-foot"><span>Painting the night sky</span><span class="pl-count">000</span></div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"><div class="cursor-ring"><span class="cursor-label"></span></div><div class="cursor-dot"></div></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="logo" href="#top" data-cursor>AANSH<sup>&copy;</sup></a>
+    <nav class="nav-links">
+      <a href="#about" data-cursor>About</a>
+      <a href="#journey" data-cursor>Journey</a>
+      <a href="#projects" data-cursor>Projects</a>
+      <a href="#works" data-cursor>Works</a>
+      <a href="#contact" data-cursor>Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact" data-cursor><span class="dot"></span>Available for projects</a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-top">
+        <span>Portfolio &mdash; &copy;2026</span>
+        <span>Lodha Genius Fellow &rsquo;26</span>
+        <span class="hide-sm">Greater Delhi, India</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="line l1"><span class="inner">EXPLORE MY</span></span>
+        <span class="line l2"><span class="inner">PORTFOLIO</span></span>
+      </h1>
+      <div class="hero-figure">
+        <svg class="bust" viewBox="0 0 400 470" aria-hidden="true">
+          <defs>
+            <linearGradient id="bustFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1a1a1a"/><stop offset=".55" stop-color="#0c0c0c"/><stop offset="1" stop-color="#050505"/>
+            </linearGradient>
+            <radialGradient id="rim" cx=".5" cy=".3" r=".6">
+              <stop offset=".75" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".22"/>
+            </radialGradient>
+          </defs>
+          <path fill="url(#bustFill)" d="M200 26c-22 0-36 8-47 18-14-2-27 6-31 19-12 5-18 18-14 31-9 10-9 25-1 35-3 13 3 26 14 31 2 22 11 44 24 60 6 8 9 17 9 27v22c-30 10-64 18-92 30-30 13-46 36-50 66l-4 105h384l-4-105c-4-30-20-53-50-66-28-12-62-20-92-30v-22c0-10 3-19 9-27 13-16 22-38 24-60 11-5 17-18 14-31 8-10 8-25-1-35 4-13-2-26-14-31-4-13-17-21-31-19-11-10-25-18-47-18z"/>
+          <path fill="url(#rim)" d="M200 26c-22 0-36 8-47 18-14-2-27 6-31 19-12 5-18 18-14 31-9 10-9 25-1 35-3 13 3 26 14 31 2 22 11 44 24 60 6 8 9 17 9 27v22c-30 10-64 18-92 30-30 13-46 36-50 66l-4 105h384l-4-105c-4-30-20-53-50-66-28-12-62-20-92-30v-22c0-10 3-19 9-27 13-16 22-38 24-60 11-5 17-18 14-31 8-10 8-25-1-35 4-13-2-26-14-31-4-13-17-21-31-19-11-10-25-18-47-18z"/>
+        </svg>
+        <!-- Drop a transparent cut-out photo at assets/aansh.png and it replaces the silhouette -->
+        <img class="photo" src="assets/aansh.png" alt="Aansh Yadav" onload="this.parentNode.classList.add('has-photo')" onerror="this.remove()">
+      </div>
+      <div class="hero-foot">
+        <div class="hf-left">
+          <p class="mono">Aansh Yadav</p>
+          <p class="mono dim">Programmer &mdash; Web Developer</p>
+          <p class="mono dim">Grade 11 &middot; Somerville School</p>
+        </div>
+        <div class="hf-right">
+          <p>Aspiring computer scientist focused on numerical algorithms, cryptography &amp; software engineering.</p>
+          <a class="scroll-cue mono" href="#about" data-cursor>Scroll to explore <span>&darr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="about-sky"></div>
+      <canvas class="about-flow"></canvas>
+      <div class="about-shade"></div>
+      <div class="about-panel">
+        <div class="spot" aria-hidden="true">
+          <div class="spot-beam"></div>
+          <div class="spot-floor"></div>
+          <svg class="spot-figure" viewBox="0 0 140 120">
+            <circle cx="62" cy="34" r="11"/>
+            <path d="M52 46c-8 6-11 20-10 36l2 22h34l3-10c6 4 14 6 22 5l4-18c-4-14-14-20-24-18-6-12-18-19-31-17z"/>
+            <path d="M84 56c8-2 18 2 22 12l-4 20-6 0 1-14c-4-6-10-8-16-6z" opacity=".8"/>
+            <path d="M40 104h70l4 4H36z" opacity=".6"/>
+          </svg>
+          <div class="dust"></div>
+        </div>
+        <div class="about-content">
+          <div class="ac-row">
+            <span class="label">Discipline &amp; Craft</span>
+            <span class="label dim">Python &bull; JavaScript &bull; NumPy &bull; PyTorch</span>
+          </div>
+          <div class="ac-main">
+            <p class="ac-text">I&rsquo;m Aansh &mdash; a Grade 11 student who builds where mathematics meets software. Newton fractals, SVD image compression, AI-powered apps: I like turning equations into things you can see, touch and use.</p>
+            <div class="ac-actions">
+              <a class="btn btn-glow" href="assets/Aansh-Yadav-Resume.pdf" target="_blank" rel="noopener" data-cursor="Open">Resume</a>
+              <a class="btn btn-line" href="https://www.linkedin.com/in/aanshyadav24/" target="_blank" rel="noopener" data-cursor="Visit">LinkedIn</a>
+            </div>
+          </div>
+          <div class="ac-stats">
+            <div><b data-count="1.4" data-suffix="%">1.4%</b><span>Lodha Genius acceptance rate</span></div>
+            <div><b data-count="94.8" data-suffix="%">94.8%</b><span>CBSE Class 10 boards</span></div>
+            <div><b data-count="286" data-suffix="/300">286/300</b><span>IPSYO 2026 &mdash; Highest Distinction</span></div>
+            <div><b data-count="10" data-suffix="+">10+</b><span>Projects built &amp; shipped</span></div>
+          </div>
+        </div>
+      </div>
+      <h2 class="about-title" aria-label="About me"><span class="w1">ABOUT</span><span class="w2">ME</span></h2>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="journey" id="journey">
+      <div class="j-bg" aria-hidden="true"><div class="j-track"></div></div>
+      <div class="sec-head">
+        <span class="label">Origin &amp; Foundations</span><span class="rule"></span><span class="label j-count">01 / 05</span>
+      </div>
+      <div class="j-grid">
+        <div class="j-left">
+          <span class="pill">Foundation &amp; Journey</span>
+          <h2 class="j-title ghost" data-text="WHERE I'VE BEEN">WHERE<br>I&rsquo;VE BEEN</h2>
+          <p class="j-intro">A short map of the rooms I&rsquo;ve learned in &mdash; research, code, stage and board.</p>
+        </div>
+        <div class="j-right">
+          <span class="label j-when">2026 — NOW</span>
+          <h3 class="j-role glitch" data-text="">&nbsp;</h3>
+          <p class="j-org mono"></p>
+          <p class="j-desc"></p>
+          <ul class="j-tags"></ul>
+        </div>
+      </div>
+      <div class="j-progress"></div>
+    </section>
+
+    <!-- THE STORY (scroll-scrubbed film) -->
+    <section class="film" id="story" aria-label="The story">
+      <div class="film-stage">
+        <canvas class="fl fl-svd"></canvas>
+        <div class="fl fl-final"></div>
+        <canvas class="fl fl-fog"></canvas>
+        <canvas class="fl fl-sky"></canvas>
+        <canvas class="fl fl-gl"></canvas>
+        <canvas class="fl fl-curtain"></canvas>
+        <div class="fl-texts">
+          <div class="ft ft-1 light">
+            <span class="label">Chapter &mdash; The Story</span>
+            <h2>Every build begins<br><em>behind a curtain.</em></h2>
+          </div>
+          <div class="ft ft-2 dark">
+            <span class="label">It starts as</span>
+            <h2><em>a question.</em></h2>
+            <div class="eq serif">f(z) = z&sup3; &minus; 1</div>
+          </div>
+          <div class="ft ft-3 light">
+            <span class="label">Then it becomes</span>
+            <h2><em>an equation.</em></h2>
+            <p class="mono">Newton&ndash;Raphson &middot; live on your GPU &middot; zoom <b class="ft-zoom">&times;1</b></p>
+          </div>
+          <div class="ft ft-4 light">
+            <span class="label">Then</span>
+            <h2><em>code.</em></h2>
+            <p class="mono">Smart SVD on this site&rsquo;s own sky &middot; rank <b class="ft-rank">1</b> / 48</p>
+          </div>
+          <div class="ft ft-5 dark">
+            <h2>And finally, something<br><em>you can explore.</em></h2>
+            <span class="label">Selected work &darr;</span>
+          </div>
+        </div>
+        <div class="fl-hud"><span class="mono fl-chap">01 / 05</span><span class="fl-bar"><i></i></span><span class="mono">Scroll</span></div>
+      </div>
+    </section>
+
+    <!-- FEATURED (cylinder carousel) -->
+    <section class="featured" id="projects">
+      <div class="sec-head dark">
+        <span class="label">Selected Work</span><span class="rule"></span><span class="label f-count">01 / 06</span>
+      </div>
+      <h2 class="big-head">FEATURED <span>PROJECTS</span></h2>
+      <div class="cyl" data-cursor="View"><div class="cyl-scene"></div></div>
+      <div class="f-caption">
+        <h3 class="f-title">KLENS</h3>
+        <p class="f-sub">A personal toxicologist in your camera</p>
+        <span class="mono f-hint">Click to open &middot; scroll to rotate</span>
+      </div>
+    </section>
+
+    <!-- WORKS (rotating ring) -->
+    <section class="works" id="works">
+      <div class="sec-head dark">
+        <span class="label">Builds &amp; Experiments</span><span class="rule"></span><span class="label">Python &middot; Web</span>
+      </div>
+      <h2 class="big-head">MORE <span>WORKS</span></h2>
+      <div class="ring-wrap" data-cursor="View"><div class="ring"></div></div>
+      <div class="w-center">WORKS &rsquo;26</div>
+      <div class="w-left"><span class="mono w-idx">01</span><h3 class="w-title">JOB TRACKER</h3><p class="w-sub"></p></div>
+      <ul class="w-list"></ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="sec-head">
+        <span class="label">Got an idea?</span><span class="rule"></span><span class="label">Say hello</span>
+      </div>
+      <h2 class="chrome" data-text="LET'S TALK">LET&rsquo;S TALK</h2>
+      <p class="c-text">Open to collaborations, research, freelance builds and conversations about numbers, code or tabla.</p>
+      <p class="c-mail mono">aansh24course@gmail.com</p>
+      <div class="c-pills">
+        <a class="btn btn-glow" href="mailto:aansh24course@gmail.com" data-cursor="Write">Email me</a>
+        <a class="btn btn-line" href="https://www.linkedin.com/in/aanshyadav24/" target="_blank" rel="noopener" data-cursor="Visit">LinkedIn</a>
+        <a class="btn btn-line" href="https://github.com/aansh24" target="_blank" rel="noopener" data-cursor="Visit">GitHub</a>
+        <a class="btn btn-line" href="https://www.fiverr.com/aansh_yadav" target="_blank" rel="noopener" data-cursor="Visit">Fiverr</a>
+        <a class="btn btn-line" href="assets/Aansh-Yadav-Resume.pdf" target="_blank" rel="noopener" data-cursor="Open">Resume</a>
+      </div>
+      <footer class="foot">
+        <span class="mono">&copy; 2026 Aansh Yadav</span>
+        <span class="mono hide-sm">English &middot; Hindi &middot; Deutsch &middot; Sanskrit</span>
+        <span class="mono">New Delhi <span class="clock">--:--</span></span>
+        <a class="mono" href="#top" data-cursor>Back to top &uarr;</a>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Project modal -->
+  <div class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop"></div>
+    <article class="modal-card" data-lenis-prevent>
+      <button class="modal-close" aria-label="Close" data-cursor="Close">&times;</button>
+      <div class="modal-cover"></div>
+      <div class="modal-body">
+        <span class="label m-tech"></span>
+        <h3 class="m-title"></h3>
+        <p class="m-desc"></p>
+        <ul class="m-feat"></ul>
+      </div>
+    </article>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/starry.js"></script>
+  <script src="js/covers.js"></script>
+  <script src="js/film.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
