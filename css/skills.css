@@ -1,20 +1,30 @@
-/* ============ The Hall of Skills — scroll-driven 3D walk-through ============ */
-.skills { position: relative; height: 100vh; height: 100svh; overflow: hidden; background: #eceae6; color: var(--ink); }
+/* ============ The Hall of Skills — calm, scroll-driven 3D gallery ============ */
+.skills {
+  --sk-ivory: #e9e3d7;
+  --sk-ivory-dim: rgba(233,227,215,.62);
+  --sk-shade: #12110f;
+  position: relative; height: 100vh; height: 100svh; overflow: hidden; background: #1d1c1a; color: var(--sk-ivory);
+}
 .skills .sk-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.sk-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 3; }
-.sk-ui { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+/* soft vignette keeps the eye in the middle and the edges quiet */
+.skills::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background: radial-gradient(ellipse 85% 75% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.5) 100%);
+}
+.sk-flash { position: absolute; inset: 0; background: #0b0a09; opacity: 0; pointer-events: none; z-index: 3; }
+.sk-ui { position: absolute; inset: 0; pointer-events: none; z-index: 4; color: var(--sk-ivory); }
 
 .sk-hud {
   position: absolute; top: 76px; left: var(--gutter); right: var(--gutter);
-  display: flex; align-items: center; gap: 18px; color: rgba(0,0,0,.65);
+  display: flex; align-items: center; gap: 18px; color: var(--sk-ivory-dim);
 }
 .sk-hud .rule { flex: 1; height: 1px; background: currentColor; opacity: .25; }
 .sk-hud .mono { font-variant-numeric: tabular-nums; }
 
-.sk-rail { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px; display: grid; grid-template-columns: 7fr 8fr 5fr 5fr; gap: 8px; color: rgba(0,0,0,.6); }
+.sk-rail { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px; display: grid; grid-template-columns: 7fr 8fr 5fr 5fr; gap: 8px; color: var(--sk-ivory-dim); }
 .sk-rail span { display: block; margin-bottom: 8px; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
-.sk-rail i { display: block; height: 2px; background: currentColor; opacity: .25; position: relative; overflow: hidden; }
-.sk-rail i b { position: absolute; inset: 0; background: currentColor; transform: scaleX(0); transform-origin: left; opacity: 4; }
+.sk-rail i { display: block; height: 1px; background: rgba(233,227,215,.2); position: relative; overflow: hidden; }
+.sk-rail i b { position: absolute; inset: 0; background: var(--sk-ivory); transform: scaleX(0); transform-origin: left; }
 
 /* big centred titles: intro, each hall, exit */
 .sk-intro, .sk-hallintro, .sk-exit {
@@ -23,54 +33,44 @@
 }
 .sk-intro h2, .sk-hallintro h2, .sk-exit h2 {
   font-family: "Instrument Serif", Georgia, serif; font-weight: 400; letter-spacing: -.02em; line-height: .92;
-  font-size: clamp(48px, 8vw, 150px); margin: 14px 0 16px; text-wrap: balance;
-  text-shadow: 0 2px 40px rgba(236,234,230,.7);
+  font-size: clamp(48px, 7.4vw, 140px); margin: 14px 0 16px; text-wrap: balance;
+  text-shadow: 0 2px 40px rgba(0,0,0,.6);
 }
 .sk-intro h2 em, .sk-hallintro h2 em, .sk-exit h2 em { font-style: italic; }
-.sk-intro p, .sk-hallintro p, .sk-exit p { max-width: 460px; font-size: 14px; line-height: 1.6; opacity: .7; }
+.sk-intro p, .sk-hallintro p, .sk-exit p { max-width: 460px; font-size: 14px; line-height: 1.6; color: var(--sk-ivory-dim); }
+.sk-intro .label, .sk-hallintro .label, .sk-exit .label { color: var(--sk-ivory-dim); }
 
 /* exhibit pin, leader line and label */
 .sk-pin { position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; }
 .sk-pin::before, .sk-pin::after {
-  content: ""; position: absolute; left: -15px; top: -15px; width: 30px; height: 30px; border-radius: 50%;
-  border: 1.5px solid currentColor;
+  content: ""; position: absolute; left: -14px; top: -14px; width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid currentColor;
 }
-.sk-pin::after { animation: sk-ping 2s ease-out infinite; }
-@keyframes sk-ping { from { transform: scale(1); opacity: .9; } to { transform: scale(2.3); opacity: 0; } }
+.sk-pin::after { animation: sk-ping 3.2s ease-out infinite; }
+@keyframes sk-ping { from { transform: scale(1); opacity: .6; } to { transform: scale(1.9); opacity: 0; } }
 .sk-line { position: absolute; left: 0; top: 0; height: 1px; background: currentColor; opacity: 0; transform-origin: left; }
-.sk-card { position: absolute; left: 0; top: 0; width: min(360px, 34vw); opacity: 0; }
-.sk-cat { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; opacity: .65; font-variant-numeric: tabular-nums; }
+.sk-card { position: absolute; left: 0; top: 0; width: min(360px, 34vw); opacity: 0; text-shadow: 0 0 16px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.8); }
+.sk-cat { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--sk-ivory-dim); font-variant-numeric: tabular-nums; }
 .sk-name {
-  font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(42px, 4.6vw, 84px);
+  font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(42px, 4.4vw, 80px);
   line-height: .95; letter-spacing: -.02em; margin: 10px 0 12px; text-wrap: balance;
 }
-.sk-ex { font-size: 14px; line-height: 1.55; opacity: .85; }
+.sk-ex { font-size: 14px; line-height: 1.55; color: rgba(233,227,215,.82); }
 .sk-src { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 .sk-src li {
-  padding: 6px 10px; border-radius: 999px; border: 1px solid currentColor; font-family: var(--mono); font-size: 9.5px;
-  letter-spacing: .06em; text-transform: uppercase; opacity: .7;
+  padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(233,227,215,.3); background: rgba(18,17,15,.55);
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--sk-ivory-dim);
 }
-
-/* keep the label readable over columns and trees: a soft halo in the hall's own light */
-.sk-card { text-shadow: 0 0 14px rgba(236,234,230,.95), 0 0 2px rgba(236,234,230,.9); }
-.sk-src li { background: rgba(236,234,230,.78); }
-.skills.is-dark .sk-card { text-shadow: 0 0 16px rgba(0,0,0,.95), 0 0 2px rgba(0,0,0,.9); }
-.skills.is-dark .sk-src li { background: rgba(0,0,0,.6); }
-
-/* dark halls flip every overlay colour to white */
-.skills.is-dark .sk-ui { color: #fff; }
-.skills.is-dark .sk-hud, .skills.is-dark .sk-rail { color: rgba(255,255,255,.7); }
-.skills.is-dark .sk-intro h2, .skills.is-dark .sk-hallintro h2, .skills.is-dark .sk-exit h2 { text-shadow: 0 2px 40px rgba(0,0,0,.7); }
-.skills .sk-ui { color: var(--ink); transition: color .6s; }
 
 /* list shown only when WebGL isn't available */
 .sk-fallback { display: none; }
 .skills.no-gl { height: auto; padding: 140px var(--gutter) 80px; }
-.skills.no-gl .sk-gl, .skills.no-gl .sk-ui, .skills.no-gl .sk-flash { display: none; }
+.skills.no-gl::after, .skills.no-gl .sk-gl, .skills.no-gl .sk-ui, .skills.no-gl .sk-flash { display: none; }
 .skills.no-gl .sk-fallback { display: grid; gap: 34px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.sk-fallback .label { color: var(--sk-ivory-dim); }
 .sk-fallback ul { margin-top: 12px; display: grid; gap: 10px; }
-.sk-fallback li { font-size: 14px; line-height: 1.5; color: rgba(0,0,0,.7); }
-.sk-fallback b { display: block; color: var(--ink); font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 26px; }
+.sk-fallback li { font-size: 14px; line-height: 1.5; color: rgba(233,227,215,.75); }
+.sk-fallback b { display: block; color: var(--sk-ivory); font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 26px; }
 
 /* short windows (small laptops, landscape phones): tighter label so it never reaches the top bar */
 @media (max-height: 620px) {
@@ -86,6 +86,9 @@
   .sk-card { width: auto; left: var(--gutter); right: var(--gutter); top: auto; bottom: 86px; transform: none !important; }
   .sk-line { display: none; }
   .sk-name { font-size: clamp(38px, 11vw, 60px); }
-  .sk-rail { grid-template-columns: 7fr 8fr 5fr 5fr; }
   .sk-rail span { font-size: 8.5px; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sk-pin::after { animation: none; }
 }
