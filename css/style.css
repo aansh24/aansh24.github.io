@@ -57,6 +57,25 @@ ul { list-style: none; margin: 0; padding: 0; }
   font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.6);
 }
 
+/* ============ Cursor ============ */
+/* the dot sits exactly on the pointer and the ring catches up within a few frames; only transforms change */
+.cursor { position: fixed; inset: 0; pointer-events: none; z-index: 90; opacity: 0; transition: opacity .25s; }
+.cursor.is-on { opacity: 1; }
+.cursor-dot, .cursor-ring { position: fixed; left: 0; top: 0; will-change: transform; mix-blend-mode: difference; }
+.cursor-dot i { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: #fff; transition: opacity .2s; }
+.cursor-ring i {
+  position: absolute; left: -42px; top: -42px; width: 84px; height: 84px; border-radius: 50%;
+  border: 2.2px solid rgba(255,255,255,.75); display: grid; place-items: center;
+  transform: scale(.45); transition: transform .3s var(--ease), background-color .3s, border-color .3s;
+}
+.cursor-label { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #000; opacity: 0; transition: opacity .2s; }
+.cursor.is-hover .cursor-ring i { transform: scale(.76); background: #fff; border-color: #fff; }
+.cursor.has-label .cursor-ring i { transform: scale(1); background: #fff; border-color: #fff; }
+.cursor.has-label .cursor-label { opacity: 1; }
+.cursor.is-hover .cursor-dot i, .cursor.has-label .cursor-dot i { opacity: 0; }
+@media (hover: hover) and (pointer: fine) { html.has-cursor, html.has-cursor * { cursor: none !important; } }
+@media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+
 /* ============ Grain ============ */
 /* a faint, still film grain (it no longer flickers) */
 .grain {

@@ -1,4 +1,4 @@
-// Scroll choreography, carousels, menu state and preloader.
+// Scroll choreography, carousels, cursor, menu state and preloader.
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
@@ -27,6 +27,38 @@
   function whileVisible(el, cb) {
     new IntersectionObserver(([en]) => cb(en.isIntersecting), { rootMargin: '10% 0px' }).observe(el);
   }
+
+  /* ---------- Cursor: the dot sits exactly on the pointer, the ring catches up within a few frames ---------- */
+  (function cursor() {
+    const root = $('.cursor');
+    if (!root) return;
+    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) { root.remove(); return; }
+    const dot = $('.cursor-dot'), ring = $('.cursor-ring'), label = $('.cursor-label');
+    let x = -100, y = -100, rx = x, ry = y, raf = 0, shown = false;
+    const place = (el, px, py) => { el.style.transform = `translate3d(${px}px,${py}px,0)`; };
+    function follow() { // runs only while the ring is still catching up, then stops
+      rx += (x - rx) * 0.42; ry += (y - ry) * 0.42;
+      if (Math.abs(x - rx) < 0.2 && Math.abs(y - ry) < 0.2) { rx = x; ry = y; }
+      place(ring, rx, ry);
+      raf = rx !== x || ry !== y ? requestAnimationFrame(follow) : 0;
+    }
+    addEventListener('pointermove', (e) => {
+      if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
+      x = e.clientX; y = e.clientY;
+      place(dot, x, y);
+      if (!shown) { shown = true; rx = x; ry = y; place(ring, x, y); root.classList.add('is-on'); document.documentElement.classList.add('has-cursor'); }
+      if (!raf) raf = requestAnimationFrame(follow);
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => root.classList.remove('is-on'));
+    document.addEventListener('mouseenter', () => { if (shown) root.classList.add('is-on'); });
+    document.addEventListener('mouseover', (e) => {
+      const t = e.target.closest('[data-cursor]');
+      const txt = t ? t.getAttribute('data-cursor') : '';
+      root.classList.toggle('has-label', !!txt);
+      root.classList.toggle('is-hover', !!t && !txt);
+      if (txt) label.textContent = txt;
+    });
+  })();
 
   /* ---------- Menu: colour follows the section underneath, current section is underlined ---------- */
   function navState() {
