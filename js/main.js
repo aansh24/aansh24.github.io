@@ -1,4 +1,4 @@
-// Scroll choreography, carousels, cursor and preloader.
+// Scroll choreography, carousels, menu state and preloader.
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
@@ -10,7 +10,7 @@
   gsap.registerPlugin(ScrollTrigger);
 
   /* ---------- Smooth scroll ---------- */
-  const lenis = new Lenis({ lerp: reduced ? 1 : 0.085, smoothWheel: !reduced, wheelMultiplier: 0.95 });
+  const lenis = new Lenis({ lerp: reduced ? 1 : 0.1, smoothWheel: !reduced, wheelMultiplier: 1 });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
@@ -28,21 +28,28 @@
     new IntersectionObserver(([en]) => cb(en.isIntersecting), { rootMargin: '10% 0px' }).observe(el);
   }
 
-  /* ---------- Cursor ---------- */
-  (function cursor() {
-    const root = $('.cursor'); if (!root || matchMedia('(pointer: coarse)').matches) return;
-    const dot = $('.cursor-dot'), ring = $('.cursor-ring'), label = $('.cursor-label');
-    const dx = gsap.quickTo(dot, 'x', { duration: 0.12 }), dy = gsap.quickTo(dot, 'y', { duration: 0.12 });
-    const rx = gsap.quickTo(ring, 'x', { duration: 0.45, ease: 'power3' }), ry = gsap.quickTo(ring, 'y', { duration: 0.45, ease: 'power3' });
-    addEventListener('mousemove', (e) => { dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY); });
-    document.addEventListener('mouseover', (e) => {
-      const t = e.target.closest('[data-cursor]');
-      const txt = t ? t.getAttribute('data-cursor') : '';
-      root.classList.toggle('has-label', !!txt);
-      root.classList.toggle('is-hover', !!t && !txt);
-      if (txt) label.textContent = txt;
+  /* ---------- Menu: colour follows the section underneath, current section is underlined ---------- */
+  function navState() {
+    const nav = $('.nav'), links = $$('.nav-links a');
+    const sections = [
+      ['.hero', 'light', null], ['.about', 'dark', '#about'], ['.journey', 'dark', '#journey'], ['.film', 'dark', '#journey'],
+      ['.featured', 'light', '#projects'], ['.works', 'light', '#works'], ['.skills', 'dark', '#skills'], ['.contact', 'dark', '#contact']
+    ];
+    const set = (theme, href) => {
+      nav.classList.toggle('is-light', theme === 'light');
+      nav.classList.toggle('is-dark', theme === 'dark');
+      links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === href));
+    };
+    sections.forEach(([sel, theme, href]) => {
+      const sec = $(sel); if (!sec) return;
+      // pinned sections sit inside a taller pin-spacer; use it so the state lasts for the whole pinned scroll
+      const el = sec.parentElement && sec.parentElement.classList.contains('pin-spacer') ? sec.parentElement : sec;
+      ScrollTrigger.create({ trigger: el, start: 'top 40px', end: 'bottom 40px', onToggle: (st) => { if (st.isActive) set(theme, href); } });
     });
-  })();
+    set('light', null);
+    ScrollTrigger.create({ start: 40, end: 'max', onToggle: (st) => nav.classList.toggle('is-scrolled', st.isActive) });
+    gsap.to('.nav-progress i', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: true } });
+  }
 
   /* ---------- Hero ---------- */
   function heroScroll() {
@@ -364,6 +371,7 @@
     if (window.Skills) Skills.init(sky, lenis).catch((err) => console.error('Skills hall failed', err));
     contact();
     heroScroll();
+    navState();
 
     const flow = Starry.flowLayer($('.about-flow'));
     whileVisible($('.about'), (v) => (v && !reduced ? flow.start() : flow.stop()));
