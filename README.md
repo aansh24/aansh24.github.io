@@ -27,3 +27,7 @@ https://github.com/aansh24/aansh24.github.io. Push to `main` and the site update
   a real SVD of the site's sky sharpening from rank 1 to 48, and clouds that part into the next section.
   Its timing lives in the `T` and `TEXT` tables at the top of `film.js`; delete the `<section class="film">`
   block in `index.html` to remove it.
+- `js/skills.js` + `css/skills.css` are "The Hall of Skills" (between More Works and Let's Talk): a scroll-driven
+  first-person walk through four three.js halls — Code, Signals, Craft and Numbers — with one animated sculpture
+  per LinkedIn skill. Edit the `SKILLS` list at the top of `skills.js` to add, remove or reword a skill; each
+  entry names its hall, its sculpture (`obj`), an example line and its LinkedIn context chips.

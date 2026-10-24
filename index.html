@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/film.css">
+  <link rel="stylesheet" href="css/skills.css">
 </head>
 <body class="is-loading">
 
@@ -31,6 +32,7 @@
       <a href="#journey" data-cursor>Journey</a>
       <a href="#projects" data-cursor>Projects</a>
       <a href="#works" data-cursor>Works</a>
+      <a href="#skills" data-cursor>Skills</a>
       <a href="#contact" data-cursor>Contact</a>
     </nav>
     <a class="nav-cta" href="#contact" data-cursor><span class="dot"></span>Available for projects</a>
@@ -204,6 +206,39 @@
       <ul class="w-list"></ul>
     </section>
 
+    <!-- SKILLS (scroll-driven 3D walk-through) -->
+    <section class="skills" id="skills" aria-label="Skills">
+      <canvas class="sk-gl"></canvas>
+      <div class="sk-flash"></div>
+      <div class="sk-ui">
+        <div class="sk-hud"><span class="label sk-hall">Hall I &middot; Code</span><span class="rule"></span><span class="mono sk-count">00 / 25</span></div>
+        <div class="sk-intro">
+          <span class="label">Skills &mdash; from LinkedIn</span>
+          <h2>The Hall of <em>Skills</em></h2>
+          <p>Twenty-five skills in four halls. Keep scrolling to walk through.</p>
+        </div>
+        <div class="sk-hallintro">
+          <span class="label sk-hnum">Hall I</span>
+          <h2 class="sk-htitle">The Hall of <em>Code</em></h2>
+          <p class="sk-hsub"></p>
+        </div>
+        <div class="sk-exit">
+          <span class="label">End of the tour</span>
+          <h2>That was <em>the tour.</em></h2>
+          <p>Every skill in these halls is listed and endorsed on LinkedIn.</p>
+        </div>
+        <i class="sk-pin"></i><i class="sk-line"></i>
+        <div class="sk-card"><span class="sk-cat"></span><h3 class="sk-name"></h3><p class="sk-ex"></p><ul class="sk-src"></ul></div>
+        <div class="sk-rail">
+          <div><span>I &middot; Code</span><i><b></b></i></div>
+          <div><span>II &middot; Signals</span><i><b></b></i></div>
+          <div><span>III &middot; Craft</span><i><b></b></i></div>
+          <div><span>IV &middot; Numbers</span><i><b></b></i></div>
+        </div>
+      </div>
+      <div class="sk-fallback"></div>
+    </section>
+
     <!-- CONTACT -->
     <section class="contact" id="contact">
       <div class="sec-head">
@@ -250,6 +285,8 @@
   <script src="js/starry.js"></script>
   <script src="js/covers.js"></script>
   <script src="js/film.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/skills.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

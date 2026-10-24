@@ -361,6 +361,7 @@
     if (window.Film) { try { Film.init(sky); } catch (err) { console.error('Story film failed', err); } }
     featured(covers);
     works(covers);
+    if (window.Skills) Skills.init(sky).catch((err) => console.error('Skills hall failed', err));
     contact();
     heroScroll();
 
